@@ -10,10 +10,6 @@ import academic.model.Enrollment;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-/**
- * Driver class for Task 4: Simulating storage of multiple Course, Student, and Enrollment objects
- * using separate ArrayLists and handling interactive user input with specific commands.
- */
 public class Driver4 {
 
     public static void main(String[] args) {
@@ -73,8 +69,7 @@ public class Driver4 {
                     }
                     break;
                 default:
-                    // Opsional: Tangani perintah yang tidak dikenali
-                    // System.err.println("Perintah tidak dikenali: " + command);
+                    
                     break;
             }
         }
@@ -91,7 +86,7 @@ public class Driver4 {
 
         // Tampilkan semua Enrollment
         for (Enrollment enrollment : enrollments) {
-            System.out.println(enrollment.getEnrollmentDetails());
+            System.out.println(enrollment);
         }
 
         input.close();

@@ -8,10 +8,6 @@ import academic.model.Student;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-/**
- * Driver class for Task 2: Simulating storage of multiple Student objects
- * using an array and handling interactive user input.
- */
 public class Driver2 {
 
     public static void main(String[] args) {

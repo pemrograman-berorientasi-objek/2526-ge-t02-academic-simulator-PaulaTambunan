@@ -8,10 +8,6 @@ import academic.model.Course;
 import java.util.Scanner;
 import java.util.ArrayList; // Using ArrayList for dynamic array size as specified by "array" media
 
-/**
- * Driver class for Task 1: Simulating storage of multiple Course objects
- * using an array and handling interactive user input.
- */
 public class Driver1 {
 
     public static void main(String[] args) {
