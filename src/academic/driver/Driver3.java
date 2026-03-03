@@ -1,7 +1,7 @@
 package academic.driver;
 
 /**
- * @author 12S24025-Paula Gevriella Tambunan
+ * @author 12S24015 LUCAS PARDEDE
  */
 
 import academic.model.Enrollment;
