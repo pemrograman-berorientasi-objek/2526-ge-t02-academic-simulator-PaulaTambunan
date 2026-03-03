@@ -1,15 +1,50 @@
 package academic.driver;
 
 /**
- * @author NIM Nama
- * @author NIM Nama
+ * @author 12S24025-Paula Gevriella Tambunan
+ */
+
+import academic.model.Student;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+/**
+ * Driver class for Task 2: Simulating storage of multiple Student objects
+ * using an array and handling interactive user input.
  */
 public class Driver2 {
 
-    public static void main(String[] _args) {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
 
-        // codes
+        while (input.hasNextLine()) {
+            String line = input.nextLine();
 
+            if (line.equals("---")) {
+                break;
+            }
+
+            String[] segments = line.split("#");
+            if (segments.length == 4) {
+                String id = segments[0];
+                String name = segments[1];
+                int year = Integer.parseInt(segments[2]);
+                String program = segments[3];
+
+                // Memanggil konstruktor overloaded yang baru
+                Student newStudent = new Student(id, name, year, program);
+                students.add(newStudent);
+            } else {
+                // Opsional: Tangani input yang formatnya salah
+                // System.err.println("Melewatkan input yang salah format: " + line);
+            }
+        }
+
+        for (Student student : students) {
+            System.out.println(student.getStudentDetails());
+        }
+
+        input.close();
     }
-
 }
