@@ -49,4 +49,4 @@ package academic.model;
             return getStudentDetails();
         }
     }
-    
+        

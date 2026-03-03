@@ -1,7 +1,7 @@
 package academic.model;
 
 /**
- * @author 12S24025-Paula Gevriella Tambunan
+ * @author 12S24025 Paula Gevriella tambunan
  */
 
 public class Enrollment {
