@@ -10,8 +10,7 @@ import java.util.ArrayList;
 /**
  * Driver class for Task 3: Simulating storage of multiple Enrollment objects
  * using an array and handling interactive user input.
- * Modified to handle both input formats: with "enrollment-add#" prefix (for autograder)
- * and direct data (for original example).
+ * Now refactored with a dedicated function for adding enrollments.
  */
 public class Driver3 {
 
@@ -27,7 +26,7 @@ public class Driver3 {
                 break;
             }
 
-            String actualDataLine = line; // Default, asumsikan ini adalah data langsung
+            String actualDataLine = line; 
 
             // Cek apakah baris input diawali dengan "enrollment-add#"
             if (line.startsWith("enrollment-add#")) {
@@ -36,26 +35,13 @@ public class Driver3 {
                     actualDataLine = parts[1]; // Ambil bagian data setelah prefix
                 } else {
                     // Jika hanya ada "enrollment-add" tanpa data, abaikan atau log error
-                    continue; // Lanjut ke baris berikutnya
+                    continue; 
                 }
             }
             // else: Jika tidak diawali "enrollment-add#", maka actualDataLine tetap 'line' aslinya.
 
-            // Proses data enrollment (baik dari input langsung atau setelah menghapus prefix)
-            String[] segments = actualDataLine.split("#");
-            // Input memiliki 4 segmen: Course Code, Student ID, Academic Year, Semester
-            if (segments.length == 4) {
-                String courseCode = segments[0];
-                String studentId = segments[1];
-                String academicYear = segments[2];
-                String semester = segments[3];
-
-                Enrollment newEnrollment = new Enrollment(courseCode, studentId, academicYear, semester);
-                enrollments.add(newEnrollment);
-            } else {
-                // Opsional: Tangani input data pendaftaran yang formatnya salah
-                // System.err.println("Melewatkan input pendaftaran yang salah format: " + actualDataLine);
-            }
+            // Panggil fungsi baru untuk memproses dan menambahkan enrollment
+            addEnrollment(actualDataLine, enrollments);
         }
 
         // Tampilkan semua enrollments yang tersimpan
@@ -64,5 +50,27 @@ public class Driver3 {
         }
 
         input.close();
+    }
+
+    /**
+     * Helper method to parse enrollment data from a string and add it to the list.
+     * @param dataLine The string containing enrollment details (e.g., "12S2203#12S20999#2021/2022#even")
+     * @param enrollments The ArrayList to which the new Enrollment object will be added.
+     */
+    private static void addEnrollment(String dataLine, ArrayList<Enrollment> enrollments) {
+        String[] segments = dataLine.split("#");
+        // Input Enrollment memiliki 4 segmen: Course Code, Student ID, Academic Year, Semester
+        if (segments.length == 4) {
+            String courseCode = segments[0];
+            String studentId = segments[1];
+            String academicYear = segments[2];
+            String semester = segments[3];
+
+            Enrollment newEnrollment = new Enrollment(courseCode, studentId, academicYear, semester);
+            enrollments.add(newEnrollment);
+        } else {
+            // Opsional: Tangani input data pendaftaran yang formatnya salah
+            // System.err.println("Melewatkan input pendaftaran yang salah format: " + dataLine);
+        }
     }
 }
